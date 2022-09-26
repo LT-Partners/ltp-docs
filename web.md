@@ -77,47 +77,57 @@ For registration, 4 inputs are required:
 
 - [Confirm Password] - It should be same as [Password].
 
-  **CREATE MY ACCOUNT**
+**CREATE MY ACCOUNT**
 
-  It calls the following API :
+It calls the following API :
 
-  > POST - <https://ltpautomatedpublisherscorecard.uc.r.appspot.com/users/reg>
+> POST - <https://ltpautomatedpublisherscorecard.uc.r.appspot.com/users/reg>
 
-  The request should have the following body :
+The request should have the following body :
+
+```json
+{
+  "name": "Rishav Kumar",
+  "email": "rishav@lt.partners",
+  "password": "Sumon389"
+}
+```
+
+Possible responses are :
+
+- Status - **200** | Registration is successful.
 
   ```json
   {
+    "id": 00,
     "name": "Rishav Kumar",
     "email": "rishav@lt.partners",
-    "password": "Sumon389"
+    "brand": "LTP Demo Brand",
   }
   ```
 
-  Possible responses are :
+- Status - **500** | System errors.
 
-  - Status - **200** | Registration is successful.
+  ```json
+  {
+    "message": "Error message."
+  }
+  ```
 
-    ```json
-    {
-      "id": 00,
-      "name": "Rishav Kumar",
-      "email": "rishav@lt.partners",
-      "brand": "LTP Demo Brand",
-    }
-    ```
+- Status - **500** | Email already exists in our servers.
 
-  - Status - **500** | System errors.
+  ```json
+  {
+    "message": "Email already in use."
+  }
+  ```
 
-    ```json
-    {
-      "message": "Error message."
-    }
-    ```
+**Sign In**
 
-  - Status - **500** | Email already exists in our servers.
+Update's Authentication Screen state to the following data
 
-    ```json
-    {
-      "message": "Email already in use."
-    }
-    ```
+```json
+{ action: "login" }
+```
+
+#### Login
